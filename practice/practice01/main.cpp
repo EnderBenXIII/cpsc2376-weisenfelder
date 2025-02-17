@@ -1,7 +1,6 @@
 #include <iostream>
 #include <vector>
 
-// Function prototypes
 void printVector(const std::vector<int>& numbers);
 void doubleVector(std::vector<int>& numbers);
 int calculateSum(const std::vector<int>& numbers);
@@ -11,14 +10,14 @@ int main() {
     std::vector<int> numbers;
     int choice;
 
-    do { //Display the Menu for the User
+    do { //menu display
         std::cout << "\nVector Control Menu:\n"; 
         std::cout << "1. Add an item to the vector\n";
         std::cout << "2. Print the vector\n";
         std::cout << "3. Double the vector\n";
         std::cout << "4. Find the sum\n";
-        std::cout << "5. Print multiples of a user-defined value\n";
-        std::cout << "6. Exit\n";
+        std::cout << "5. Print multiples of a value\n";
+        std::cout << "6. End the Program\n";
         std::cout << "Enter your choice: ";
         std::cin >> choice;
 
@@ -51,15 +50,14 @@ int main() {
                 std::cout << "Exiting program.\n";
                 break;
             default:
-                std::cout << "Invalid choice, please try again.\n";
+                std::cout << "Sorry, I didn't get that, please try again.\n";
         }
     } while (choice != 6);
     
     return 0;
 }
 
-// Function to print the vector
-void printVector(const std::vector<int>& numbers) {
+void printVector(const std::vector<int>& numbers) { //print vector
     std::cout << "Vector elements: ";
     for (int num : numbers) {
         std::cout << num << " ";
@@ -67,15 +65,13 @@ void printVector(const std::vector<int>& numbers) {
     std::cout << "\n";
 }
 
-// Function to double each element in the vector
-void doubleVector(std::vector<int>& numbers) {
+void doubleVector(std::vector<int>& numbers) { //double sum
     for (int i = 0; i < numbers.size(); i++) {
         numbers.at(i) *= 2;
     }
 }
 
-// Function to calculate the sum of the vector elements
-int calculateSum(const std::vector<int>& numbers) {
+int calculateSum(const std::vector<int>& numbers) { //calculate sum
     int sum = 0;
     for (int num : numbers) {
         sum += num;
@@ -83,8 +79,7 @@ int calculateSum(const std::vector<int>& numbers) {
     return sum;
 }
 
-// Function to print multiples of a given value
-void printMultiples(const std::vector<int>& numbers, int value) {
+void printMultiples(const std::vector<int>& numbers, int value) { //print multiples
     std::cout << "Multiples of " << value << ": ";
     for (int num : numbers) {
         if (num % value == 0) {
