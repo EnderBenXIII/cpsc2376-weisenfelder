@@ -37,25 +37,29 @@ void checkBalance(double balance) { //balance check
 
 void deposit(double& balance) { //deposit money
     double depositAmount;
+    
     cout << "Enter deposit amount: $";
-    cin >> depositAmount;
-
-    if (depositAmount <= 0) {
-        cout << "Deposit amount must be positive." << endl;
-    } else {
-        balance += depositAmount;
-        cout << "Deposit complete. Your new balance is: $" << fixed << setprecision(2) << balance << endl;
+    while (!(cin >> depositAmount) || depositAmount <= 0) { 
+        cout << "Invalid input. Please enter a positive number: $";
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
     }
+
+    balance += depositAmount;
+    cout << "Deposit complete. Your new balance is: $" << fixed << setprecision(2) << balance << endl;
 }
 
 void withdraw(double& balance) { //withdraw money
     double withdrawAmount;
+    
     cout << "Enter withdrawal amount: $";
-    cin >> withdrawAmount;
+    while (!(cin >> withdrawAmount) || withdrawAmount <= 0) {
+        cout << "Invalid input. Please enter a positive number: $";
+        cin.clear(); // Clear error state
+        cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+    }
 
-    if (withdrawAmount <= 0) {
-        cout << "Withdrawal amount must be positive." << endl;
-    } else if (withdrawAmount > balance) {
+    if (withdrawAmount > balance) {
         cout << "Insufficient funds. Your balance is $" << fixed << setprecision(2) << balance << endl;
     } else {
         balance -= withdrawAmount;
@@ -79,7 +83,11 @@ int main() {
         cout << "Enter your choice: ";
 
         int choice;
-        cin >> choice;
+        while (!(cin >> choice)) { 
+            cout << "Invalid input. Please enter a number (1-4): ";
+            cin.clear(); 
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+        }
 
         switch (choice) {
             case 1:
@@ -99,6 +107,7 @@ int main() {
                 cout << "Error: Invalid choice. Please select a valid option." << endl;
         }
 
+        cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
         writeBalanceToFile(filename, balance); //save balance
     }
 
