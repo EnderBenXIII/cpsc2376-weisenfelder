@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <iterator>
-#include <limits>  // For std::numeric_limits
+#include <limits>  
 
 int main() {
     std::vector<int> numbers;
@@ -14,12 +14,12 @@ int main() {
         if (std::cin >> n) {
             numbers.push_back(n);
         } else {
-            // Invalid input: break out of the loop
+            //break out of the loop
             break;
         }
     }
 
-    // Clear the error state and flush the bad input
+    // clear the error 
     std::cin.clear();
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
