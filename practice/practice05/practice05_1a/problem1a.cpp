@@ -7,7 +7,7 @@ int main() {
     std::vector<int> numbers;
     int n;
 
-    std::cout << "Enter integers (type 'q' or any non-integer to stop):\n";
+    std::cout << "Enter some integers. (type any non-integer and then press the 'Enter' key to stop):\n";
 
     while (true) {
         std::cout << "Enter a number: ";
